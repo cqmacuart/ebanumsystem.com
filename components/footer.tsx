@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-[#1A1A1A] flex flex-col sm:flex-row sm:justify-between gap-3">
-          <p className="text-xs text-[#9A9590]">© 2025 Ebano Labs. All rights reserved.</p>
+          <p className="text-xs text-[#9A9590]">© 2026 Ebano Labs. All rights reserved.</p>
         </div>
       </div>
     </footer>

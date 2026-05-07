@@ -13,19 +13,27 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      {/* Abstract geometric background */}
+      {/* Background layers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large amber circle glow — top right */}
+        {/* Amber headline glow */}
         <div
-          className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-10"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] opacity-[0.07]"
           style={{
             background:
-              "radial-gradient(circle, #C9922A 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 50%, #C9922A, transparent)",
+            filter: "blur(40px)",
           }}
         />
-        {/* Subtle grid lines */}
+        {/* Top-right corner glow */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute -top-32 -right-32 w-80 h-80 rounded-full opacity-[0.08]"
+          style={{
+            background: "radial-gradient(circle, #C9922A 0%, transparent 70%)",
+          }}
+        />
+        {/* Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
           style={{
             backgroundImage:
               "linear-gradient(#F5F0E8 1px, transparent 1px), linear-gradient(90deg, #F5F0E8 1px, transparent 1px)",
@@ -37,11 +45,14 @@ export default function HeroSection() {
       </div>
 
       <div
-        className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-700 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(32px)",
+          transition: "opacity 0.8s ease, transform 0.8s ease",
+        }}
+        className="relative z-10 max-w-4xl mx-auto px-6 text-center"
       >
-        {/* Pre-headline label */}
+        {/* Label */}
         <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-[#C9922A]/30 rounded-sm bg-[#C9922A]/5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C9922A]" />
           <span className="text-xs text-[#C9922A] uppercase tracking-widest font-medium">
@@ -74,7 +85,8 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="#audit"
-            className="w-full sm:w-auto px-8 py-4 bg-[#C9922A] text-[#0A0A0A] text-sm font-semibold rounded-sm tracking-wide hover:bg-[#E0A83A] transition-all duration-200 hover:shadow-[0_0_30px_rgba(201,146,42,0.3)]"
+            className="w-full sm:w-auto px-8 py-4 bg-[#C9922A] text-[#0A0A0A] text-sm font-semibold rounded-sm tracking-wide hover:bg-[#E0A83A] transition-all duration-200"
+            style={{ animation: "pulse-amber 2.8s ease-in-out 1.2s 3" }}
           >
             Get Free Site Audit
           </Link>
@@ -86,7 +98,6 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        {/* Social proof line */}
         <p className="mt-12 text-xs text-[#9A9590] tracking-wide">
           8+ years building for contractors, HVAC, plumbing, and roofing
           companies

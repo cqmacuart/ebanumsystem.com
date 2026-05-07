@@ -4,7 +4,7 @@ import HeroSection from "@/components/sections/hero";
 import ProblemSection from "@/components/sections/problem";
 import SolutionSection from "@/components/sections/solution";
 import ProcessSection from "@/components/sections/process";
-import WorkSection from "@/components/sections/work";
+import ClientMarquee from "@/components/sections/client-marquee";
 import AuditSection from "@/components/sections/audit";
 import type { Metadata } from "next";
 
@@ -26,13 +26,32 @@ export default function HomePage() {
       <Nav />
       <main>
         <HeroSection />
+        <SectionDivider />
         <ProblemSection />
+        <SectionDivider />
         <SolutionSection />
+        <SectionDivider />
         <ProcessSection />
-        <WorkSection />
+        <ClientMarquee />
+        <SectionDivider />
         <AuditSection />
       </main>
       <Footer />
     </>
+  );
+}
+
+function SectionDivider() {
+  return (
+    <div className="relative h-px overflow-visible">
+      <div className="absolute inset-0 bg-[#2A2A2A]" />
+      <div
+        className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-px w-32 opacity-60"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #C9922A, transparent)",
+        }}
+      />
+    </div>
   );
 }

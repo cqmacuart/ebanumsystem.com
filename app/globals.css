@@ -12,10 +12,6 @@
 
   --font-display: var(--font-fraunces);
   --font-body: var(--font-dm-sans);
-
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
 }
 
 * {
@@ -45,14 +41,23 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
-/* Scroll-reveal animation */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* Problem card hover glow */
+.problem-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.problem-card:hover {
+  border-color: rgba(201, 146, 42, 0.35);
+  box-shadow: 0 0 40px rgba(201, 146, 42, 0.08), inset 0 0 40px rgba(201, 146, 42, 0.03);
 }
 
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Infinite marquee scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* CTA button amber pulse — fires on load, 3 times */
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 146, 42, 0); }
+  50%       { box-shadow: 0 0 0 8px rgba(201, 146, 42, 0.25); }
 }

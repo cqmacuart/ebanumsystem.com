@@ -54,7 +54,7 @@ export default function ProblemSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {problems.map((p, i) => (
             <ScrollReveal key={p.number} delay={i * 120}>
-              <div className="group h-full p-8 bg-[#111111] border border-[#2A2A2A] rounded-sm hover:border-[#C9922A]/40 transition-all duration-300 hover:bg-[#111111]/80">
+              <div className="problem-card group h-full p-8 bg-[#111111] border border-[#2A2A2A] rounded-sm">
                 <div className="flex items-center justify-between mb-6">
                   <span
                     className="text-4xl font-light text-[#1A1A1A] group-hover:text-[#C9922A]/20 transition-colors duration-300 select-none"

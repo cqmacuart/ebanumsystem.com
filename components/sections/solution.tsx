@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ui/scroll-reveal";
 const stats = [
   { value: "8+", label: "Years Experience" },
   { value: "20+", label: "Projects Launched" },
-  { value: "Next.js", label: "& Tailwind CSS" },
+  { value: "48h", label: "Fast Turnaround" },
   { value: "USA", label: "Focused Clients" },
 ];
 
