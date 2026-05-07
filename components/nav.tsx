@@ -27,47 +27,23 @@ export default function Nav() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <span className="w-6 h-6 flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-              <rect
-                x="2"
-                y="2"
-                width="9"
-                height="9"
-                rx="1"
-                fill="#C9922A"
-                opacity="0.9"
-              />
-              <rect
-                x="13"
-                y="2"
-                width="9"
-                height="9"
-                rx="1"
-                fill="#C9922A"
-                opacity="0.4"
-              />
-              <rect
-                x="2"
-                y="13"
-                width="9"
-                height="9"
-                rx="1"
-                fill="#C9922A"
-                opacity="0.4"
-              />
-              <rect
-                x="13"
-                y="13"
-                width="9"
-                height="9"
-                rx="1"
-                fill="#C9922A"
-                opacity="0.15"
-              />
+            <svg viewBox="0 0 23 23" fill="none" className="w-6 h-6">
+              {/* Row 0 */}
+              <rect x="0"  y="0"  width="7" height="7" rx="1" fill="#C9922A" />
+              <rect x="8"  y="0"  width="7" height="7" rx="1" fill="#c9912ad8" />
+              <rect x="16" y="0"  width="7" height="7" rx="1" fill="#b98626be" />
+              {/* Row 1 */}
+              <rect x="0"  y="8"  width="7" height="7" rx="1" fill="#c9892aff" />
+              <rect x="8"  y="8"  width="7" height="7" rx="1" fill="#C9922A" />
+              <rect x="16" y="8"  width="7" height="7" rx="1" fill="#c9912a42" />
+              {/* Row 2 */}
+              <rect x="0"  y="16" width="7" height="7" rx="1" fill="#C9922A" />
+              <rect x="8"  y="16" width="7" height="7" rx="1" fill="#c9912ad8" />
+              <rect x="16" y="16" width="7" height="7" rx="1" fill="#b98626be" />
             </svg>
           </span>
           <span
-            className="text-[#F5F0E8] font-semibold tracking-[0.12em] text-sm uppercase"
+            className="text-[#C9922A] font-semibold tracking-[0.12em] text-lg uppercase"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             EBANO
