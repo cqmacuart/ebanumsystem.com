@@ -12,7 +12,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
+    <section className="relative min-h-dvh flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
       {/* Background layers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Amber headline glow */}

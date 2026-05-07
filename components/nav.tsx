@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -74,9 +76,9 @@ export default function Nav() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLink href="/work">Work</NavLink>
-          <NavLink href="/#process">Process</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
+          <NavLink href="/work" active={pathname === "/work"}>Work</NavLink>
+          <NavLink href="/#process" active={pathname === "/"}>Process</NavLink>
+          <NavLink href="/contact" active={pathname === "/contact"}>Contact</NavLink>
           <Link
             href="/#audit"
             className="px-5 py-2 bg-[#C9922A] text-[#0A0A0A] text-sm font-semibold rounded-sm tracking-wide hover:bg-[#E0A83A] transition-colors duration-200"
@@ -106,13 +108,13 @@ export default function Nav() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-[#111111] border-t border-[#2A2A2A] px-6 py-6 flex flex-col gap-5">
-          <MobileNavLink href="/work" onClick={() => setMenuOpen(false)}>
+          <MobileNavLink href="/work" active={pathname === "/work"} onClick={() => setMenuOpen(false)}>
             Work
           </MobileNavLink>
-          <MobileNavLink href="/#process" onClick={() => setMenuOpen(false)}>
+          <MobileNavLink href="/#process" active={pathname === "/"} onClick={() => setMenuOpen(false)}>
             Process
           </MobileNavLink>
-          <MobileNavLink href="/contact" onClick={() => setMenuOpen(false)}>
+          <MobileNavLink href="/contact" active={pathname === "/contact"} onClick={() => setMenuOpen(false)}>
             Contact
           </MobileNavLink>
           <Link
@@ -130,15 +132,19 @@ export default function Nav() {
 
 function NavLink({
   href,
+  active,
   children,
 }: {
   href: string;
+  active?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <Link
       href={href}
-      className="text-sm text-[#9A9590] hover:text-[#F5F0E8] transition-colors duration-200 tracking-wide"
+      className={`text-sm transition-colors duration-200 tracking-wide ${
+        active ? "text-[#C9922A]" : "text-[#9A9590] hover:text-[#F5F0E8]"
+      }`}
     >
       {children}
     </Link>
@@ -147,10 +153,12 @@ function NavLink({
 
 function MobileNavLink({
   href,
+  active,
   children,
   onClick,
 }: {
   href: string;
+  active?: boolean;
   children: React.ReactNode;
   onClick?: () => void;
 }) {
@@ -158,7 +166,9 @@ function MobileNavLink({
     <Link
       href={href}
       onClick={onClick}
-      className="text-base text-[#9A9590] hover:text-[#F5F0E8] transition-colors duration-200"
+      className={`text-base transition-colors duration-200 ${
+        active ? "text-[#C9922A]" : "text-[#9A9590] hover:text-[#F5F0E8]"
+      }`}
     >
       {children}
     </Link>

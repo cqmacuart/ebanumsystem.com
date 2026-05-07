@@ -8,9 +8,13 @@ export const metadata: Metadata = {
   title: "Contact — Ebano Labs",
   description:
     "Let's build something that works. Get in touch for a new website, redesign, landing page, or free site audit.",
+  alternates: {
+    canonical: "https://ebanumsystem.com/contact",
+  },
   openGraph: {
     title: "Contact — Ebano Labs",
     description: "Let's build something that works.",
+    url: "https://ebanumsystem.com/contact",
   },
 };
 

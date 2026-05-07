@@ -17,6 +17,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ebanumsystem.com"),
   title: "Ebano Labs — Websites that generate leads. Not excuses.",
   description:
     "Ebano Labs builds fast, conversion-focused websites for home service businesses in the USA. Stop losing leads. Start growing.",
@@ -36,12 +37,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Ebano Labs",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Ebano Labs" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ebano Labs — Websites that generate leads. Not excuses.",
     description:
       "Fast, conversion-focused websites for home service businesses.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

@@ -70,57 +70,64 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
+          <label htmlFor="cf-name" className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
             Name <span className="text-[#C9922A]">*</span>
           </label>
           <input
+            id="cf-name"
             type="text"
             value={form.name}
             onChange={set("name")}
             required
             placeholder="Your name"
-            className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 transition-colors"
+            autoComplete="name"
+            className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors"
           />
         </div>
         <div>
-          <label className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
+          <label htmlFor="cf-email" className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
             Email <span className="text-[#C9922A]">*</span>
           </label>
           <input
+            id="cf-email"
             type="email"
             value={form.email}
             onChange={set("email")}
             required
             placeholder="you@company.com"
-            className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 transition-colors"
+            autoComplete="email"
+            className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
+        <label htmlFor="cf-website" className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
           Website URL <span className="text-[#9A9590]/50">(optional)</span>
         </label>
         <input
+          id="cf-website"
           type="url"
           value={form.website}
           onChange={set("website")}
           placeholder="https://yoursite.com"
-          className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 transition-colors"
+          autoComplete="url"
+          className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors"
         />
       </div>
 
       <div>
-        <label className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
+        <label htmlFor="cf-service" className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
           What do you need? <span className="text-[#C9922A]">*</span>
         </label>
         <select
+          id="cf-service"
           value={form.service}
           onChange={set("service")}
           required
-          className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm rounded-sm focus:outline-none focus:border-[#C9922A]/50 transition-colors appearance-none"
+          className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors appearance-none"
           style={{ colorScheme: "dark" }}
         >
           {SERVICE_OPTIONS.map((o) => (
@@ -132,16 +139,17 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
+        <label htmlFor="cf-message" className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
           Tell me about your project <span className="text-[#C9922A]">*</span>
         </label>
         <textarea
+          id="cf-message"
           value={form.message}
           onChange={set("message")}
           required
           rows={5}
           placeholder="What are you working on? What's not working right now?"
-          className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 transition-colors resize-none leading-relaxed"
+          className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors resize-none leading-relaxed"
         />
       </div>
 

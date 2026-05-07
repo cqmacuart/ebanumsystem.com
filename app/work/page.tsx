@@ -9,9 +9,13 @@ export const metadata: Metadata = {
   title: "Work — Ebano Labs",
   description:
     "A focused portfolio of conversion-focused websites for home service businesses. See what a site built to generate leads actually looks like.",
+  alternates: {
+    canonical: "https://ebanumsystem.com/work",
+  },
   openGraph: {
     title: "Work — Ebano Labs",
     description: "Conversion-focused websites for home service businesses.",
+    url: "https://ebanumsystem.com/work",
   },
 };
 
