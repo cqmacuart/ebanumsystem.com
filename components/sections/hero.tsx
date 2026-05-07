@@ -56,7 +56,7 @@ export default function HeroSection() {
         <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-[#C9922A]/30 rounded-sm bg-[#C9922A]/5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C9922A]" />
           <span className="text-xs text-[#C9922A] uppercase tracking-widest font-medium">
-            Home Service Businesses — USA
+            Home Service Businesses — Remote Worldwide
           </span>
         </div>
 

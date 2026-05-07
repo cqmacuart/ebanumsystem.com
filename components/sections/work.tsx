@@ -4,8 +4,8 @@ import ScrollReveal from "@/components/ui/scroll-reveal";
 export const projects = [
   {
     id: "digital-marketing-agency",
-    category: "Digital Marketing Agency — USA",
-    headline: "A bold, conversion-focused web presence for a US-based growth agency.",
+    category: "Digital Marketing Agency",
+    headline: "A bold, conversion-focused web presence for a growth agency.",
     description:
       "Complete redesign and rebuild in Next.js. Focused on positioning, trust signals, and turning website traffic into booked consultations.",
     tags: ["Next.js", "Redesign", "Lead Pages"],
@@ -14,7 +14,7 @@ export const projects = [
   },
   {
     id: "hvac-contractor",
-    category: "HVAC Contractor — Utah, USA",
+    category: "HVAC Contractor",
     headline: "Migration from WordPress to a fast, lead-generating service site.",
     description:
       "Rebuilt from the ground up — 3× faster load time, mobile-first, with clear calls-to-action on every page. Calls increased within the first month.",

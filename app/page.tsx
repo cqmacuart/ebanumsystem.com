@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ebano Labs — Websites that generate leads. Not excuses.",
     description:
-      "Fast, conversion-focused websites for home service businesses in the USA.",
+      "Fast, conversion-focused websites for home service businesses worldwide.",
     url: "https://ebanolabs.com",
   },
 };

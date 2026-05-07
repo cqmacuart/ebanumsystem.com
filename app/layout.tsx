@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ebanumsystem.com"),
   title: "Ebano Labs — Websites that generate leads. Not excuses.",
   description:
-    "Ebano Labs builds fast, conversion-focused websites for home service businesses in the USA. Stop losing leads. Start growing.",
+    "Ebano Labs builds fast, conversion-focused websites for home service businesses worldwide. Stop losing leads. Start growing.",
   keywords: [
     "web design",
     "lead generation website",
