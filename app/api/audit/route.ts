@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
               </td>
             </tr>
           </table>
-          <p style="margin-top: 24px; color: #999; font-size: 12px;">Sent from ebanolabs.com — Free Audit form</p>
+          <p style="margin-top: 24px; color: #999; font-size: 12px;">Sent from ebanumsystem.com — Free Audit form</p>
         </div>
       `,
     });

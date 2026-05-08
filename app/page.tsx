@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Ebano Labs — Websites that generate leads. Not excuses.",
     description:
       "Fast, conversion-focused websites for home service businesses worldwide.",
-    url: "https://ebanolabs.com",
+    url: "https://ebanumsystem.com",
   },
 };
 

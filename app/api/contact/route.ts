@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
               <td style="padding: 12px; background: #fafafa; white-space: pre-wrap;">${safeMessage}</td>
             </tr>
           </table>
-          <p style="margin-top: 24px; color: #999; font-size: 12px;">Sent from ebanolabs.com — Contact form</p>
+          <p style="margin-top: 24px; color: #999; font-size: 12px;">Sent from ebanumsystem.com — Contact form</p>
         </div>
       `,
     });
