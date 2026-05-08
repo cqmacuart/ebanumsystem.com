@@ -9,19 +9,19 @@ export const projects = [
     description:
       "Complete redesign and rebuild in Next.js. Focused on positioning, trust signals, and turning website traffic into booked consultations.",
     tags: ["Next.js", "Redesign", "Lead Pages"],
-    year: "2024",
+    year: "2026",
     accentColor: "#C9922A",
   },
-  {
-    id: "hvac-contractor",
-    category: "HVAC Contractor",
-    headline: "Migration from WordPress to a fast, lead-generating service site.",
-    description:
-      "Rebuilt from the ground up — 3× faster load time, mobile-first, with clear calls-to-action on every page. Calls increased within the first month.",
-    tags: ["Next.js", "WordPress Migration", "Conversion Focus"],
-    year: "2024",
-    accentColor: "#C9922A",
-  },
+//   {
+//     id: "hvac-contractor",
+//     category: "HVAC Contractor",
+//     headline: "Migration from WordPress to a fast, lead-generating service site.",
+//     description:
+//       "Rebuilt from the ground up — 3× faster load time, mobile-first, with clear calls-to-action on every page. Calls increased within the first month.",
+//     tags: ["Next.js", "WordPress Migration", "Conversion Focus"],
+//     year: "2024",
+//     accentColor: "#C9922A",
+//   },
 ];
 
 export default function WorkSection() {

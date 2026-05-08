@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const clients = [
   { name: "Wolf Creek", type: "Digital Marketing" },
-  { name: "Resolute Air", type: "HVAC Contractor" },
+//   { name: "Resolute Air", type: "HVAC Contractor" },
   { name: "Peak Roofing", type: "Roofing & Restoration" },
   { name: "FlowPro", type: "Plumbing Services" },
   { name: "Crestline Homes", type: "Home Renovation" },
