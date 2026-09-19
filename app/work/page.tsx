@@ -1,6 +1,7 @@
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import Link from "next/link";
+import Image from "next/image";
 import ScrollReveal from "@/components/ui/scroll-reveal";
 import { projects } from "@/components/sections/work";
 import type { Metadata } from "next";
@@ -48,27 +49,22 @@ export default function WorkPage() {
           {/* Project grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-20">
             {projects.map((project, i) => (
-              <ScrollReveal key={project.id} delay={i * 150}>
-                <div className="group h-full flex flex-col bg-[#111111] border border-[#2A2A2A] rounded-sm overflow-hidden hover:border-[#C9922A]/30 transition-all duration-300">
-                  {/* Placeholder visual */}
-                  <div className="relative h-60 bg-[#0A0A0A] overflow-hidden flex items-center justify-center">
-                    <div
-                      className="absolute inset-0 opacity-[0.04]"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(#F5F0E8 1px, transparent 1px), linear-gradient(90deg, #F5F0E8 1px, transparent 1px)",
-                        backgroundSize: "40px 40px",
-                      }}
+              <ScrollReveal key={project.slug} delay={i * 150}>
+                <Link
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group h-full flex flex-col bg-[#111111] border border-[#2A2A2A] rounded-sm overflow-hidden hover:border-[#C9922A]/30 transition-all duration-300"
+                >
+                  <div className="relative h-60 bg-[#0F0F0F] overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} website`}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     />
-                    <div className="relative flex gap-3">
-                      <div className="w-12 h-20 bg-[#C9922A]/20 rounded-sm" />
-                      <div className="w-20 h-14 bg-[#C9922A]/10 rounded-sm self-end" />
-                      <div className="w-8 h-24 bg-[#C9922A]/15 rounded-sm" />
-                      <div className="w-16 h-10 bg-[#C9922A]/8 rounded-sm self-center" />
-                    </div>
-                    <div className="absolute bottom-3 right-4 text-xs text-[#9A9590]/40 uppercase tracking-widest">
-                      Screenshots coming
-                    </div>
+                    <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
                   </div>
 
                   {/* Content */}
@@ -93,22 +89,29 @@ export default function WorkPage() {
                       {project.category}
                     </p>
                     <h2
-                      className="text-xl font-semibold text-[#F5F0E8] leading-snug mb-4"
+                      className="text-xl font-semibold text-[#F5F0E8] leading-snug mb-2"
                       style={{ fontFamily: "var(--font-fraunces)" }}
                     >
-                      {project.headline}
+                      {project.name}
                     </h2>
+                    <p className="text-sm text-[#C9B896] leading-snug mb-3">
+                      {project.headline}
+                    </p>
                     <p className="text-sm text-[#9A9590] leading-relaxed flex-1">
                       {project.description}
                     </p>
 
+                    {project.result && (
+                      <p className="text-sm text-[#C9922A] font-medium mt-4">{project.result}</p>
+                    )}
+
                     <div className="mt-6 pt-5 border-t border-[#1A1A1A]">
                       <span className="text-sm text-[#9A9590] group-hover:text-[#C9922A] transition-colors duration-200">
-                        View Project →
+                        Visit live site →
                       </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
