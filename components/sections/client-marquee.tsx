@@ -2,15 +2,17 @@ import Link from "next/link";
 
 const clients = [
   { name: "Wolf Creek", type: "Digital Marketing" },
-//   { name: "Resolute Air", type: "HVAC Contractor" },
-  { name: "Peak Roofing", type: "Roofing & Restoration" },
-  { name: "FlowPro", type: "Plumbing Services" },
-  { name: "Crestline Homes", type: "Home Renovation" },
-  { name: "GreenEdge", type: "Landscaping & Design" },
-  { name: "Bright Wire", type: "Electrical Contractors" },
-  { name: "ProCoat", type: "Painting Specialists" },
-  { name: "Cornerstone", type: "Concrete & Masonry" },
-  { name: "Summit Windows", type: "Window & Door Co." },
+  { name: "Resolute Air", type: "HVAC Contractor" },
+  { name: "AyalaTorres S.A.S", type: "Law Firm" },
+  { name: "Wolf Creek", type: "Digital Marketing" },
+  { name: "Resolute Air", type: "HVAC Contractor" },
+  { name: "AyalaTorres S.A.S", type: "Law Firm" },
+  { name: "Wolf Creek", type: "Digital Marketing" },
+  { name: "Resolute Air", type: "HVAC Contractor" },
+  { name: "AyalaTorres S.A.S", type: "Law Firm" },
+  { name: "Wolf Creek", type: "Digital Marketing" },
+  { name: "Resolute Air", type: "HVAC Contractor" },
+  { name: "AyalaTorres S.A.S", type: "Law Firm" },
 ];
 
 const doubled = [...clients, ...clients];
