@@ -1,4 +1,6 @@
-import type { NextConfig } from "next";
+// Plain ESM on purpose: the production build host has glibc < 2.30, so Next's
+// native SWC can't load there and it falls back to WASM, which fails to
+// transpile a next.config.ts. A .mjs config needs no transpiling.
 
 const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
@@ -8,7 +10,8 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
 ];
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
