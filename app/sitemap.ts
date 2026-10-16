@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
+import { absoluteUrl } from "@/lib/site";
+
+const ROUTES: { path: string; changeFrequency: "monthly" | "yearly"; priority: number }[] = [
+  { path: "/", changeFrequency: "monthly", priority: 1 },
+  { path: "/work", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/contact", changeFrequency: "yearly", priority: 0.7 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://ebanumsystem.com";
-  return [
-    { url: base, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
-    { url: `${base}/work`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.7 },
-  ];
+  const lastModified = new Date();
+  return ROUTES.map(({ path, ...rest }) => ({ url: absoluteUrl(path), lastModified, ...rest }));
 }

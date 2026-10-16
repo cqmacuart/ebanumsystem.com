@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
+import { SITE, baseOpenGraph } from "@/lib/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
+// Self-hosted variable fonts (OFL, see app/fonts/LICENSE-*): the build no
+// longer depends on reaching Google Fonts, which removes a network failure point.
+const fraunces = localFont({
+  src: "./fonts/fraunces-latin-wght.woff2",
   variable: "--font-fraunces",
   display: "swap",
-  weight: ["300", "400", "600", "700", "900"],
+  weight: "100 900",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: "./fonts/dm-sans-latin-wght.woff2",
   variable: "--font-dm-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600"],
+  weight: "100 1000",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ebanumsystem.com"),
+  metadataBase: new URL(SITE.url),
   title: "Ebano Labs — Websites that generate leads. Not excuses.",
   description:
     "Ebano Labs builds fast, conversion-focused websites for home service businesses worldwide. Stop losing leads. Start growing.",
@@ -31,13 +34,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ebano Labs" }],
   openGraph: {
-    title: "Ebano Labs — Websites that generate leads. Not excuses.",
+    ...baseOpenGraph,
+    title: `${SITE.name} — ${SITE.tagline}`,
     description:
       "Fast, conversion-focused websites for home service businesses. Built to bring in calls, not just look good.",
-    type: "website",
-    locale: "en_US",
-    siteName: "Ebano Labs",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Ebano Labs" }],
   },
   twitter: {
     card: "summary_large_image",

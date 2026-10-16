@@ -1,0 +1,33 @@
+name: Uptime
+
+# Backup monitor. Primary should be an external service (UptimeRobot / Better Stack, free, 5-min checks).
+# One job/hour ≈ 720 min/month — fits GitHub Free's 2,000 min even on a private repo.
+# A failed run emails you. GitHub pauses scheduled workflows after 60 days without repo activity.
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check pages
+        run: |
+          fail=0
+          for path in / /work /contact /sitemap.xml; do
+            url="https://ebanumsystem.com$path"
+            code=000
+            for attempt in 1 2 3; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 -A "EbanoUptime/1.0" "$url") || code=000
+              [ "$code" = "200" ] && break
+              sleep 10
+            done
+            echo "$url → $code"
+            [ "$code" = "200" ] || { echo "::error::$url returned $code"; fail=1; }
+          done
+          exit $fail

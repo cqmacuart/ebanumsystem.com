@@ -1,23 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { SERVICE_OPTIONS } from "@/lib/contact/services";
+import { HONEYPOT_FIELD } from "@/lib/contact/validation";
+import { SITE } from "@/lib/site";
 
-const SERVICE_OPTIONS = [
-  { value: "", label: "What do you need?" },
-  { value: "new-website", label: "New Website" },
-  { value: "redesign", label: "Redesign" },
-  { value: "landing-page", label: "Landing Page" },
-  { value: "site-audit", label: "Site Audit" },
-];
+const EMPTY_FORM = { name: "", email: "", website: "", service: "", message: "" };
 
 export default function ContactForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    website: "",
-    service: "",
-    message: "",
-  });
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -36,17 +28,23 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, [HONEYPOT_FIELD]: honeypot }),
       });
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", website: "", service: "", message: "" });
-      } else {
-        throw new Error("Failed");
+        setForm(EMPTY_FORM);
+        return;
       }
+      const { error } = (await res.json().catch(() => ({}))) as { error?: string };
+      setStatus("error");
+      setErrorMsg(
+        res.status === 400 && error
+          ? error
+          : `Something went wrong. Email me directly at ${SITE.email.support}`,
+      );
     } catch {
       setStatus("error");
-      setErrorMsg("Something went wrong. Email me directly at support@ebanumsystem.com");
+      setErrorMsg(`Something went wrong. Email me directly at ${SITE.email.support}`);
     }
   }
 
@@ -70,6 +68,19 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Honeypot — hidden from humans, bots fill it */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor={`cf-${HONEYPOT_FIELD}`}>Company</label>
+        <input
+          id={`cf-${HONEYPOT_FIELD}`}
+          name={HONEYPOT_FIELD}
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="cf-name" className="block text-xs text-[#9A9590] uppercase tracking-widest mb-2">
@@ -81,6 +92,7 @@ export default function ContactForm() {
             value={form.name}
             onChange={set("name")}
             required
+            maxLength={200}
             placeholder="Your name"
             autoComplete="name"
             className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors"
@@ -130,8 +142,11 @@ export default function ContactForm() {
           className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors appearance-none"
           style={{ colorScheme: "dark" }}
         >
+          <option value="" disabled>
+            What do you need?
+          </option>
           {SERVICE_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value} disabled={o.value === ""}>
+            <option key={o.value} value={o.value}>
               {o.label}
             </option>
           ))}
@@ -147,6 +162,7 @@ export default function ContactForm() {
           value={form.message}
           onChange={set("message")}
           required
+          maxLength={5000}
           rows={5}
           placeholder="What are you working on? What's not working right now?"
           className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] text-[#F5F0E8] text-sm placeholder:text-[#9A9590]/40 rounded-sm focus:outline-none focus:border-[#C9922A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9922A] transition-colors resize-none leading-relaxed"
@@ -154,7 +170,7 @@ export default function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">{errorMsg}</p>
+        <p role="alert" className="text-sm text-red-400">{errorMsg}</p>
       )}
 
       <button

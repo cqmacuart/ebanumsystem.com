@@ -2,18 +2,23 @@
 
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
+import { SITE } from "@/lib/site";
+
+const NAMESPACE = "30min";
 
 export default function ScheduleForm() {
   useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({"namespace":"30min"});
-      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    })();
-  }, [])
-  return <Cal namespace="30min"
-    calLink="ebano-labs/30min"
-    style={{width:"100%",height:"100%",overflow:"scroll"}}
-    config={{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}}
-  />;
-};
-  
+    getCalApi({ namespace: NAMESPACE })
+      .then((cal) => cal("ui", { hideEventTypeDetails: false, layout: "month_view" }))
+      .catch((err) => console.error("Cal.com embed failed to load", err));
+  }, []);
+
+  return (
+    <Cal
+      namespace={NAMESPACE}
+      calLink={SITE.calLink}
+      style={{ width: "100%", height: "100%", overflow: "scroll" }}
+      config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
+    />
+  );
+}

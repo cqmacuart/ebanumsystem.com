@@ -1,21 +1,9 @@
 import Link from "next/link";
+import { clients } from "@/lib/data/projects";
 
-const clients = [
-  { name: "Wolf Creek", type: "Digital Marketing" },
-  { name: "Resolute Air", type: "HVAC Contractor" },
-  { name: "AyalaTorres S.A.S", type: "Law Firm" },
-  { name: "Wolf Creek", type: "Digital Marketing" },
-  { name: "Resolute Air", type: "HVAC Contractor" },
-  { name: "AyalaTorres S.A.S", type: "Law Firm" },
-  { name: "Wolf Creek", type: "Digital Marketing" },
-  { name: "Resolute Air", type: "HVAC Contractor" },
-  { name: "AyalaTorres S.A.S", type: "Law Firm" },
-  { name: "Wolf Creek", type: "Digital Marketing" },
-  { name: "Resolute Air", type: "HVAC Contractor" },
-  { name: "AyalaTorres S.A.S", type: "Law Firm" },
-];
-
-const doubled = [...clients, ...clients];
+// Repeat enough times to fill wide screens, then double for a seamless loop.
+const track = Array.from({ length: 4 }, () => clients).flat();
+const doubled = [...track, ...track];
 
 export default function ClientMarquee() {
   return (
@@ -48,6 +36,7 @@ export default function ClientMarquee() {
             {doubled.map((client, i) => (
               <div
                 key={i}
+                aria-hidden={i >= clients.length}
                 className="flex items-center mx-8 shrink-0"
               >
                 <span className="w-1 h-1 rounded-full bg-[#2A2A2A] shrink-0 mr-8" />

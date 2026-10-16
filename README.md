@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ebanumsystem.com — Ebano Labs
 
-## Getting Started
+Marketing site for Ebano Labs. Next.js 16 (App Router, Turbopack) · Tailwind v4 · TypeScript.
 
-First, run the development server:
+## Develop
 
 ```bash
+nvm use            # Node 22 (see .nvmrc)
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Env vars (`.env.local`, never committed): `RESEND_API_KEY`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | What |
+| --- | --- |
+| `npm run check` | lint + typecheck + build (same as CI) |
+| `npm run build:webpack` | fallback build without Turbopack, if a Turbopack bug blocks a deploy |
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` — routes, metadata, `api/contact` (thin controller)
+- `components/` — UI; `components/sections` page sections, `components/ui` primitives
+- `lib/site.ts` — site constants (URL, emails, Cal link, OG defaults)
+- `lib/contact/` — validation, email template, use case (`submitContact`)
+- `lib/email/` — `EmailSender` interface + Resend HTTPS adapter
+- `lib/data/` — portfolio content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## CI/CD
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **CI** (`.github/workflows/ci.yml`): prod-deps audit, lint, typecheck, build on every push/PR.
+- **CodeQL**, **Dependency Review**, **Dependabot** (weekly, majors excluded).
+- **Uptime** check every 30 min; failures notify by email.
+- Deploy: the host builds `dev` on push. Protect `dev` so only green PRs reach it.
