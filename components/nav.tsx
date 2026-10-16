@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "@/components/ui/logo";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,29 +26,8 @@ export default function Nav() {
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <span className="w-6 h-6 flex items-center justify-center">
-            <svg viewBox="0 0 23 23" fill="none" className="w-6 h-6">
-              {/* Row 0 */}
-              <rect x="0"  y="0"  width="7" height="7" rx="1" fill="#C9922A" />
-              <rect x="8"  y="0"  width="7" height="7" rx="1" fill="#c9912ad8" />
-              <rect x="16" y="0"  width="7" height="7" rx="1" fill="#b98626be" />
-              {/* Row 1 */}
-              <rect x="0"  y="8"  width="7" height="7" rx="1" fill="#c9892aff" />
-              <rect x="8"  y="8"  width="7" height="7" rx="1" fill="#C9922A" />
-              <rect x="16" y="8"  width="7" height="7" rx="1" fill="#c9912a42" />
-              {/* Row 2 */}
-              <rect x="0"  y="16" width="7" height="7" rx="1" fill="#C9922A" />
-              <rect x="8"  y="16" width="7" height="7" rx="1" fill="#c9912ad8" />
-              <rect x="16" y="16" width="7" height="7" rx="1" fill="#b98626be" />
-            </svg>
-          </span>
-          <span
-            className="text-[#C9922A] font-semibold tracking-[0.12em] text-lg uppercase"
-            style={{ fontFamily: "var(--font-dm-sans)" }}
-          >
-            EBANO
-          </span>
+        <Link href="/" className="group" aria-label="Ebano Labs — home">
+          <Logo />
         </Link>
 
         {/* Desktop Links */}
@@ -68,6 +48,8 @@ export default function Nav() {
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block w-5 h-px bg-[#F5F0E8] transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
@@ -83,7 +65,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#111111] border-t border-[#2A2A2A] px-6 py-6 flex flex-col gap-5">
+        <div id="mobile-menu" className="md:hidden bg-[#111111] border-t border-[#2A2A2A] px-6 py-6 flex flex-col gap-5">
           <MobileNavLink href="/work" active={pathname === "/work"} onClick={() => setMenuOpen(false)}>
             Work
           </MobileNavLink>

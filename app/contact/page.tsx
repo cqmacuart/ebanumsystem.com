@@ -3,18 +3,20 @@ import Footer from "@/components/footer";
 import ContactForm from "@/components/sections/contact-form";
 import type { Metadata } from "next";
 import ScheduleForm from "./schedule-form";
+import { SITE, absoluteUrl, baseOpenGraph } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact — Ebano Labs",
   description:
     "Let's build something that works. Get in touch for a new website, redesign, landing page, or free site audit.",
   alternates: {
-    canonical: "https://ebanumsystem.com/contact",
+    canonical: absoluteUrl("/contact"),
   },
   openGraph: {
+    ...baseOpenGraph,
     title: "Contact — Ebano Labs",
     description: "Let's build something that works.",
-    url: "https://ebanumsystem.com/contact",
+    url: absoluteUrl("/contact"),
   },
 };
 
@@ -69,10 +71,10 @@ export default function ContactPage() {
                   <div>
                     <p className="text-sm font-medium text-[#F5F0E8] mb-1">Direct email</p>
                     <a
-                      href="mailto:support@ebanumsystem.com"
+                      href={`mailto:${SITE.email.support}`}
                       className="text-sm text-[#9A9590] hover:text-[#C9922A] transition-colors"
                     >
-                      support@ebanumsystem.com
+                      {SITE.email.support}
                     </a>
                   </div>
                 </div>
@@ -86,7 +88,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-[#F5F0E8] mb-1">Location</p>
-                    <p className="text-sm text-[#9A9590]">Colombia — Remote worldwide</p>
+                    <p className="text-sm text-[#9A9590]">{SITE.location}</p>
                   </div>
                 </div>
               </div>
@@ -104,7 +106,6 @@ export default function ContactPage() {
                 <p className="text-sm text-[#9A9590] mb-6">
                   Book a free 30-minute consultation. No commitment.
                 </p>
-                {/* Cal.com inline embed — replace YOUR_CAL_USERNAME with actual username */}
                 <div
                   id="cal-booking"
                   className="rounded-sm overflow-hidden border border-[#2A2A2A] bg-[#111111] min-h-[400px] flex items-center justify-center"
