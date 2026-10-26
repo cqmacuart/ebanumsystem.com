@@ -8,6 +8,7 @@ const stats = [
 ];
 
 const bullets = [
+  "Live in days, not months",
   "Conversion-centered design",
   "Core Web Vitals optimization",
   "Mobile-first, built to rank",

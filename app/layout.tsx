@@ -23,12 +23,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: "Ebano Labs — Websites that generate leads. Not excuses.",
   description:
-    "Ebano Labs builds fast, conversion-focused websites for home service businesses worldwide. Stop losing leads. Start growing.",
+    "Ebano Labs builds fast, conversion-focused websites and web apps for service businesses worldwide — live in days, not months.",
   keywords: [
     "web design",
     "lead generation website",
-    "home service website",
-    "HVAC website",
+    "conversion-focused website",
+    "service business website",
+    "web apps",
+    "landing pages",
+    "digital menu",
+    "online ordering",
     "contractor website",
     "Next.js web development",
   ],
@@ -37,13 +41,13 @@ export const metadata: Metadata = {
     ...baseOpenGraph,
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
-      "Fast, conversion-focused websites for home service businesses. Built to bring in calls, not just look good.",
+      "Fast, conversion-focused websites and web apps for service businesses. Built to bring in customers, not just look good.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Ebano Labs — Websites that generate leads. Not excuses.",
     description:
-      "Fast, conversion-focused websites for home service businesses.",
+      "Fast, conversion-focused websites and web apps for service businesses.",
     images: ["/og-image.jpg"],
   },
   robots: {

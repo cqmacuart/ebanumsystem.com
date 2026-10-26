@@ -33,6 +33,7 @@ export default function Nav() {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           <NavLink href="/work" active={pathname === "/work"}>Work</NavLink>
+          <NavLink href="/prototypes" active={pathname === "/prototypes"}>Prototypes</NavLink>
           <NavLink href="/#process" active={pathname === "/"}>Process</NavLink>
           <NavLink href="/contact" active={pathname === "/contact"}>Contact</NavLink>
           <Link
@@ -68,6 +69,9 @@ export default function Nav() {
         <div id="mobile-menu" className="md:hidden bg-[#111111] border-t border-[#2A2A2A] px-6 py-6 flex flex-col gap-5">
           <MobileNavLink href="/work" active={pathname === "/work"} onClick={() => setMenuOpen(false)}>
             Work
+          </MobileNavLink>
+          <MobileNavLink href="/prototypes" active={pathname === "/prototypes"} onClick={() => setMenuOpen(false)}>
+            Prototypes
           </MobileNavLink>
           <MobileNavLink href="/#process" active={pathname === "/"} onClick={() => setMenuOpen(false)}>
             Process

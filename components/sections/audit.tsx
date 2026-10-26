@@ -38,7 +38,7 @@ export default function AuditSection() {
 
               <div className="flex justify-center">
                 <Link
-                  href="/contact"
+                  href="/contact?service=site-audit"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0A0A0A] text-[#F5F0E8] text-sm font-semibold rounded-xl tracking-wide hover:bg-[#1A1A1A] transition-colors duration-200 shadow-sm"
                 >
                   <span>Get Free Audit</span>
@@ -60,7 +60,7 @@ export default function AuditSection() {
               </div>
 
               <p className="mt-6 text-xs text-[#0A0A0A]/50">
-                Only 2 spots available for audits this month.
+                Every audit is done by me, by hand — usually back to you within 48 hours.
               </p>
             </div>
           </div>
