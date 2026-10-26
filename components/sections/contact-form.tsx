@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { SERVICE_OPTIONS } from "@/lib/contact/services";
+import { SERVICE_OPTIONS, type ServiceValue } from "@/lib/contact/services";
 import { HONEYPOT_FIELD } from "@/lib/contact/validation";
 import { SITE } from "@/lib/site";
 
 const EMPTY_FORM = { name: "", email: "", website: "", service: "", message: "" };
 
-export default function ContactForm() {
-  const [form, setForm] = useState(EMPTY_FORM);
+export default function ContactForm({ defaultService }: { defaultService?: ServiceValue }) {
+  const [form, setForm] = useState({ ...EMPTY_FORM, service: defaultService ?? "" });
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");

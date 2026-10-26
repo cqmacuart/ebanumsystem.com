@@ -10,14 +10,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Work — Ebano Labs",
   description:
-    "A focused portfolio of conversion-focused websites for home service businesses. See what a site built to generate leads actually looks like.",
+    "A focused portfolio of conversion-focused websites for service businesses. See what a site built to generate leads actually looks like.",
   alternates: {
     canonical: absoluteUrl("/work"),
   },
   openGraph: {
     ...baseOpenGraph,
     title: "Work — Ebano Labs",
-    description: "Conversion-focused websites for home service businesses.",
+    description: "Conversion-focused websites for service businesses.",
     url: absoluteUrl("/work"),
   },
 };

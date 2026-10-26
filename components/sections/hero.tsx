@@ -56,7 +56,7 @@ export default function HeroSection() {
         <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 border border-[#C9922A]/30 rounded-sm bg-[#C9922A]/5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C9922A]" />
           <span className="text-xs text-[#C9922A] uppercase tracking-widest font-medium">
-            Home Service Businesses — Remote Worldwide
+            Service Businesses — Remote Worldwide
           </span>
         </div>
 
@@ -77,8 +77,8 @@ export default function HeroSection() {
           className="max-w-2xl mx-auto text-lg md:text-xl text-[#9A9590] leading-relaxed mb-10"
           style={{ fontFamily: "var(--font-dm-sans)" }}
         >
-          I build fast, conversion-focused websites for home service businesses
-          — so your site works as hard as you do.
+          I build fast, conversion-focused websites and web apps for service
+          businesses — live in days, not months.
         </p>
 
         {/* CTAs */}
@@ -99,8 +99,7 @@ export default function HeroSection() {
         </div>
 
         <p className="mt-12 text-xs text-[#9A9590] tracking-wide">
-          8+ years building for contractors, HVAC, plumbing, and roofing
-          companies
+          8+ years building websites for service businesses
         </p>
       </div>
 

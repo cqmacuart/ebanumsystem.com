@@ -5,6 +5,7 @@ import ProblemSection from "@/components/sections/problem";
 import SolutionSection from "@/components/sections/solution";
 import ProcessSection from "@/components/sections/process";
 import ClientMarquee from "@/components/sections/client-marquee";
+import PrototypesTeaser from "@/components/sections/prototypes-teaser";
 import AuditSection from "@/components/sections/audit";
 import type { Metadata } from "next";
 import { SITE, baseOpenGraph } from "@/lib/site";
@@ -12,13 +13,13 @@ import { SITE, baseOpenGraph } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Ebano Labs — Websites that generate leads. Not excuses.",
   description:
-    "I build fast, conversion-focused websites for home service businesses — so your site works as hard as you do.",
+    "I build fast, conversion-focused websites and web apps for service businesses — live in days, not months.",
   alternates: { canonical: SITE.url },
   openGraph: {
     ...baseOpenGraph,
     title: "Ebano Labs — Websites that generate leads. Not excuses.",
     description:
-      "Fast, conversion-focused websites for home service businesses worldwide.",
+      "Fast, conversion-focused websites and web apps for service businesses worldwide.",
     url: SITE.url,
   },
 };
@@ -36,6 +37,7 @@ export default function HomePage() {
         <SectionDivider />
         <ProcessSection />
         <ClientMarquee />
+        <PrototypesTeaser />
         <SectionDivider />
         <AuditSection />
       </main>

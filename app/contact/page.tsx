@@ -1,6 +1,8 @@
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import { Suspense } from "react";
 import ContactForm from "@/components/sections/contact-form";
+import PreselectedContactForm from "./preselected-contact-form";
 import type { Metadata } from "next";
 import ScheduleForm from "./schedule-form";
 import { SITE, absoluteUrl, baseOpenGraph } from "@/lib/site";
@@ -8,7 +10,7 @@ import { SITE, absoluteUrl, baseOpenGraph } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact — Ebano Labs",
   description:
-    "Let's build something that works. Get in touch for a new website, redesign, landing page, or free site audit.",
+    "Let's build something that works. Get in touch for a new website, redesign, landing page, web app, digital menu, or free site audit.",
   alternates: {
     canonical: absoluteUrl("/contact"),
   },
@@ -96,7 +98,10 @@ export default function ContactPage() {
 
             {/* Right: form + cal embed */}
             <div>
-              <ContactForm />
+              {/* Static HTML ships the plain form; ?service= is read on the client. */}
+              <Suspense fallback={<ContactForm />}>
+                <PreselectedContactForm />
+              </Suspense>
 
               {/* Cal.com embed */}
               <div className="mt-10 pt-8 border-t border-[#2A2A2A]">

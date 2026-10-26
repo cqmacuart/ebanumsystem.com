@@ -1,4 +1,4 @@
-import { SERVICE_OPTIONS, type ServiceValue } from "./services";
+import { isServiceValue, type ServiceValue } from "./services";
 
 export interface ContactInput {
   name: string;
@@ -43,11 +43,11 @@ export function validateContact(body: unknown): ValidationResult {
   if (email.length > LIMITS.email || !EMAIL_RE.test(email)) return { ok: false, error: "Invalid email" };
   if (message.length > LIMITS.message) return { ok: false, error: "Message is too long" };
   if (str(b.website).length > LIMITS.website || website === undefined) return { ok: false, error: "Invalid website URL" };
-  if (!SERVICE_OPTIONS.some((o) => o.value === service)) return { ok: false, error: "Invalid service" };
+  if (!isServiceValue(service)) return { ok: false, error: "Invalid service" };
 
   return {
     ok: true,
-    data: { name, email, website, service: service as ServiceValue, message },
+    data: { name, email, website, service, message },
   };
 }
 

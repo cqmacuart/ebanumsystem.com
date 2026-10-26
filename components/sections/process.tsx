@@ -12,7 +12,7 @@ const steps = [
   {
     number: "2",
     title: "I Build",
-    body: "Fast, clean, mobile-first — designed around your customer, not design trends. I work quickly and keep you in the loop without burying you in approvals.",
+    body: "I use AI-assisted tools to handle the repetitive parts of the build, which is why it moves fast. Every page, line of copy and line of code is still reviewed by me before you see it — speed without cutting corners. You stay in the loop without being buried in approvals.",
   },
   {
     number: "3",
