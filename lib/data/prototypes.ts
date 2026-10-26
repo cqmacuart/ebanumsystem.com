@@ -27,6 +27,8 @@ export type Prototype = {
   demoUrl: string;
   /** Path under /public, e.g. /prototypes/digital-menu-ordering.webp */
   image: string;
+  /** "mobile" = portrait phone screenshot, shown whole in a phone frame. Defaults to "desktop". */
+  device?: "mobile" | "desktop";
   language: PrototypeLanguage;
   /** Real build times only. Optional — hidden when empty. */
   buildLog?: BuildLogEntry[];
@@ -52,6 +54,7 @@ export const prototypes: Prototype[] = [
     stack: ["Vite", "React 19", "TypeScript", "Static SPA"],
     demoUrl: "https://cqmacuart.github.io/carta-digital-prototype/demo/",
     image: "/prototypes/digital-menu-ordering.webp",
+    device: "mobile",
     language: "es",
     buildLog: [
       { label: "v1 base", time: "4h" },

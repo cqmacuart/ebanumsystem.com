@@ -47,6 +47,8 @@ export function PrototypeCard({
   const wide = layout === "wide";
   const languageBadge = LANGUAGE_BADGE[prototype.language];
   const eyebrow = [KIND_LABEL[prototype.kind], prototype.style].filter(Boolean).join(" · ");
+  const mobile = prototype.device === "mobile";
+  const hasImage = hasPublicAsset(prototype.image);
 
   return (
     <article
@@ -55,11 +57,12 @@ export function PrototypeCard({
       }`}
     >
       <div
-        className={`relative aspect-[16/10] bg-[#0F0F0F] overflow-hidden ${
-          wide ? "md:aspect-auto md:w-1/2 md:min-h-[26rem] md:shrink-0" : ""
+        className={`relative bg-[#0F0F0F] overflow-hidden ${mobile ? "aspect-square" : "aspect-[16/10]"} ${
+          wide ? `md:aspect-auto md:min-h-[26rem] md:shrink-0 ${mobile ? "md:w-5/12" : "md:w-1/2"}` : ""
         }`}
       >
-        {hasPublicAsset(prototype.image) ? (
+        {hasImage && mobile && <PhoneFrame src={prototype.image} alt={`${prototype.name} prototype`} />}
+        {hasImage && !mobile && (
           <Image
             src={prototype.image}
             alt={`${prototype.name} prototype`}
@@ -67,9 +70,8 @@ export function PrototypeCard({
             sizes={wide ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
             className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
           />
-        ) : (
-          <ImagePlaceholder name={prototype.name} />
         )}
+        {!hasImage && <ImagePlaceholder name={prototype.name} />}
         <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
         <span className="absolute top-4 left-4 text-[0.65rem] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-sm bg-[#0A0A0A]/85 text-[#C9922A] border border-[#C9922A]/40 backdrop-blur-sm">
           Prototype
@@ -163,6 +165,17 @@ export function PrototypeCard({
         </div>
       </div>
     </article>
+  );
+}
+
+/** Shows a portrait screenshot whole, inside a phone outline — no cropping. */
+function PhoneFrame({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center py-8 bg-[radial-gradient(circle_at_50%_45%,rgba(201,146,42,0.12),transparent_65%)]">
+      <div className="relative h-full aspect-[1/2] rounded-[1.75rem] border-[5px] border-[#1E1E1E] bg-[#1E1E1E] shadow-[0_24px_60px_rgba(0,0,0,0.55)] ring-1 ring-white/10 overflow-hidden transition-transform duration-500 group-hover:-translate-y-1">
+        <Image src={src} alt={alt} fill sizes="320px" className="object-cover object-top rounded-[1.4rem]" />
+      </div>
+    </div>
   );
 }
 
